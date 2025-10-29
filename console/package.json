@@ -1,8 +1,10 @@
 {
-	"name": "console",
+	"name": "quizzle",
 	"version": "0.0.0",
 	"license": "MIT",
-	"bin": "dist/cli.js",
+	"bin": {
+		"quizzle": "dist/cli.js"
+	},
 	"type": "module",
 	"engines": {
 		"node": ">=16"

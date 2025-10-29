@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 import React from 'react';
-import {render} from 'ink';
+import { render } from 'ink';
 import meow from 'meow';
 import App from './app.js';
 
 const cli = meow(
 	`
 	Usage
-	  $ console
+	  $ quizzle
 
 	Options
 		--name  Your name
 
 	Examples
-	  $ console --name=Jane
+	  $ quizzle --name=Jane
 	  Hello, Jane
 `,
 	{
