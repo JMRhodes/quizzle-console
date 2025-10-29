@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "ESNext", // Use ESNext modules
+    "moduleResolution": "Bundler", // Resolve modules for ES module compatibility
+    "target": "ESNext", // Target modern JavaScript
+    "sourceMap": true, // Generate source maps for debugging
+    "outDir": "dist", // Output compiled files to the `dist` folder
+    "rootDir": "src", // Define the root directory for your source files
+    "baseUrl": ".", // Required for path aliases
+    "esModuleInterop": true, // Enable better compatibility with ES modules
+    "strict": true, // Enable strict type-checking options
+    "skipLibCheck": true, // Skip type-checking of library files
+    "paths": {
+      "@middlewares/*": ["src/middlewares/*"],
+      "@config/*": ["src/config/*"]
+    }
+  },
+  "include": ["src/**/*"], // Include all files in the `src` directory
+  "exclude": ["node_modules"] // Exclude `node_modules` from compilation
+}
