@@ -5,14 +5,13 @@
 	"type": "module",
 	"scripts": {
 		"build": "tsc",
-		"start": "node dist/server.js",
-		"dev": "tsx watch src/server.ts",
+		"start": "tsx --env-file=.env dist/server.js",
+		"dev": "tsx watch --env-file=.env src/server.ts",
 		"lint": "eslint 'src/**/*.ts'",
 		"lint:fix": "eslint 'src/**/*.ts' --fix",
 		"format": "prettier --write 'src/**/*.ts'"
 	},
 	"dependencies": {
-		"dotenv": "^17.2.3",
 		"express": "^5.1.0"
 	},
 	"devDependencies": {

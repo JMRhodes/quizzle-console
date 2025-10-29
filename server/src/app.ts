@@ -7,10 +7,10 @@ const app: Express = express();
 app.use(express.json());
 
 app.get('/', (req: Request, res: Response) => {
-    // throw new Error('Test error');
-    res.json({
-        message: 'Welcome to the API',
-    });
+  // throw new Error('Test error');
+  res.json({
+    message: 'Welcome to the APIs',
+  });
 });
 
 // middlewares
