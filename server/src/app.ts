@@ -9,7 +9,7 @@ app.use(express.json());
 app.get('/', (req: Request, res: Response) => {
   // throw new Error('Test error');
   res.json({
-    message: 'Welcome to the APIs',
+    message: 'Welcome to the API',
   });
 });
 

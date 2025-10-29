@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    image: quizzle-api
+    container_name: quizzle-api
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - PORT=${PORT}
+    restart: unless-stopped
