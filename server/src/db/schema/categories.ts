@@ -5,6 +5,10 @@ export const categories = sqliteTable('categories', {
   id: integer('id').primaryKey(),
   name: text('name').notNull(),
   description: text('description').notNull(),
-  createdAt: integer('created_at', { mode: 'timestamp' }).default(sql`CURRENT_TIMESTAMP`).notNull(),
-  updatedAt: integer('updated_at', { mode: 'timestamp' }).default(sql`CURRENT_TIMESTAMP`).notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' })
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
+  updatedAt: integer('updated_at', { mode: 'timestamp' })
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
 });
