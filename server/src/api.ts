@@ -35,7 +35,7 @@ apiRouter
       data: VersionData,
     } satisfies SuccessResponse<typeof VersionData>);
   })
-  .use('questions', questions);
+  .use('/questions', questions);
 
 // Mount the versioned API router
 api.use(`/api/${apiVersion}`, apiRouter);
