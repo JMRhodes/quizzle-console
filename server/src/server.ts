@@ -1,6 +1,6 @@
-import app from './app';
+import api from './api';
 import env from './config/env';
 
-app.listen(env.port, () => {
+api.listen(env.port, () => {
   console.log(`Express server listening on http://localhost:${env.port}`);
 });
