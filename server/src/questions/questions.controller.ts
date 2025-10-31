@@ -1,8 +1,11 @@
 import express from 'express';
 import { db } from '../db/index';
-import {z } from 'zod';
+import { z } from 'zod';
 
-import { questions as questionsTable, insertQuestionsSchema } from '../db/schema/questions';
+import {
+  questions as questionsTable,
+  insertQuestionsSchema,
+} from '../db/schema/questions';
 
 const questions = express.Router();
 
@@ -15,15 +18,15 @@ questions.get('/', async (req, res) => {
 questions.post('/', async (req, res) => {
   try {
     const validatedData = insertQuestionsSchema.parse(req.body);
-    
+
     await db.insert(questionsTable).values(validatedData);
 
     res.status(201).send('Question created successfully');
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return res.status(400).json({ 
+      return res.status(400).json({
         message: 'Validation Error',
-        errors: JSON.parse(error.message) 
+        errors: JSON.parse(error.message),
       });
     }
 
