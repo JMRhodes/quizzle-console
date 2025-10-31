@@ -11,12 +11,10 @@ const apiRouter = express.Router();
 
 const apiVersion: string = 'v1';
 
-type VersionDataType = {
+const VersionData: {
   version: string;
   releaseDate: string;
-};
-
-const VersionData: VersionDataType = {
+} = {
   version: apiVersion,
   releaseDate: '2025-10-31',
 };
@@ -35,7 +33,7 @@ apiRouter
     res.json({
       message: 'Welcome to the API',
       data: VersionData,
-    } satisfies SuccessResponse<VersionDataType>);
+    } satisfies SuccessResponse<typeof VersionData>);
   })
   .use('questions', questions);
 
