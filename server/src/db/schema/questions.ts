@@ -1,7 +1,6 @@
 import { sql } from 'drizzle-orm';
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 import { createInsertSchema } from 'drizzle-zod';
-import { categories } from './categories';
 
 export const questions = sqliteTable('questions', {
   id: integer('id').primaryKey({ autoIncrement: true }),

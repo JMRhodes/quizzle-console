@@ -1,0 +1,6 @@
+{
+  "prettier.useTabs": false,
+  "prettier.tabWidth": 2, // or your preferred number of spaces
+  "editor.formatOnSave": true,
+  "indentRainbow.colorOnWhiteSpaceOnly": true // Recommended for automatic formatting on save
+}

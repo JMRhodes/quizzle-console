@@ -1,21 +1,18 @@
 import express from 'express';
 import { db } from '../db/index';
 import { z } from 'zod';
-import {
-	ReasonPhrases,
-	StatusCodes,
-	getReasonPhrase,
-} from 'http-status-codes';
+import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 
 import {
   questions as questionsTable,
   insertQuestionsSchema,
 } from '../db/schema/questions';
+import { questionsService } from './questions.service';
 
 const questions = express.Router();
 
 questions.get('/', async (req, res) => {
-  const allQuestions = await db.select().from(questionsTable);
+  const allQuestions = await questionsService.getAllQuestions();
 
   res.json({ message: 'Questions endpoint', data: allQuestions });
 });
@@ -24,9 +21,11 @@ questions.post('/', async (req, res) => {
   try {
     const validatedData = insertQuestionsSchema.parse(req.body);
 
-    await db.insert(questionsTable).values(validatedData);
+    await questionsService.addQuestion(validatedData);
 
-    res.status(StatusCodes.CREATED).send(`Question ${ReasonPhrases.CREATED} successfully.`);
+    res
+      .status(StatusCodes.CREATED)
+      .send(`Question ${ReasonPhrases.CREATED} successfully.`);
   } catch (error) {
     if (error instanceof z.ZodError) {
       return res.status(StatusCodes.BAD_REQUEST).json({
@@ -35,7 +34,9 @@ questions.post('/', async (req, res) => {
       });
     }
 
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(ReasonPhrases.INTERNAL_SERVER_ERROR);
+    res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .send(ReasonPhrases.INTERNAL_SERVER_ERROR);
   }
 });
 
