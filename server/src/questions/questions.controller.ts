@@ -1,6 +1,11 @@
 import express from 'express';
 import { db } from '../db/index';
 import { z } from 'zod';
+import {
+	ReasonPhrases,
+	StatusCodes,
+	getReasonPhrase,
+} from 'http-status-codes';
 
 import {
   questions as questionsTable,
@@ -21,16 +26,16 @@ questions.post('/', async (req, res) => {
 
     await db.insert(questionsTable).values(validatedData);
 
-    res.status(201).send('Question created successfully');
+    res.status(StatusCodes.CREATED).send(`Question ${ReasonPhrases.CREATED} successfully.`);
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return res.status(400).json({
-        message: 'Validation Error',
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        message: ReasonPhrases.BAD_REQUEST,
         errors: JSON.parse(error.message),
       });
     }
 
-    res.status(500).send('Internal Server Error');
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(ReasonPhrases.INTERNAL_SERVER_ERROR);
   }
 });
 
