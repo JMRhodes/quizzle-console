@@ -1,11 +1,11 @@
-interface Config {
+interface Env {
   port: number;
   nodeEnv: string;
 }
 
-const config: Config = {
+const env: Env = {
   port: Number(process.env.PORT) || 3000,
   nodeEnv: process.env.NODE_ENV || 'development',
 };
 
-export default config;
+export default env;
